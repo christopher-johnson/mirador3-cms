@@ -23,6 +23,9 @@ export default ({ handlePopupOpen }) => (
       <NavLink to='/contact/' exact>
         Contact
       </NavLink>
+      <NavLink to='/mirador/' exact>
+        Mirador
+      </NavLink>
     </div>
   </nav>
 )

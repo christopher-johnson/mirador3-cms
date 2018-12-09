@@ -11,12 +11,12 @@ import SinglePost from './views/SinglePost'
 import Contact from './views/Contact'
 import NoMatch from './views/NoMatch'
 import Nav from './components/Nav'
-import Footer from './components/Footer'
 import GithubCorner from './components/GithubCorner'
 import ServiceWorkerNotifications from './components/ServiceWorkerNotifications'
 import data from './data.json'
 import { slugify } from './util/url'
 import { documentHasTerm, getCollectionTerms } from './util/collection'
+import { MiradorApp } from './components/MiradorApp'
 
 const RouteWithMeta = ({ component: Component, ...props }) => (
   <Route
@@ -58,7 +58,6 @@ class App extends Component {
     const postCategories = this.getDocuments('postCategories').filter(
       category => categoriesFromPosts.indexOf(category.name.toLowerCase()) >= 0
     )
-
     return (
       <Router>
         <div className='React-Wrap'>
@@ -94,6 +93,11 @@ class App extends Component {
               description={siteDescription}
               fields={this.getDocument('pages', 'home')}
             />
+            <Route
+              path='/mirador'
+              exact
+              component={MiradorApp}
+             />
             <RouteWithMeta
               path='/about/'
               exact
@@ -154,7 +158,6 @@ class App extends Component {
 
             <Route render={() => <NoMatch siteUrl={siteUrl} />} />
           </Switch>
-          <Footer />
         </div>
       </Router>
     )

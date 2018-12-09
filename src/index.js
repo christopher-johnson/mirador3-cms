@@ -6,9 +6,15 @@ import './globalStyles.css'
 import App from './App'
 import registerServiceWorker, { unregister } from './registerServiceWorker'
 import data from './data.json'
-
+import { store } from 'mirador3-core'
+import { Provider } from 'react-redux'
+import './styles/index.css'
 const rootEl = document.getElementById('root')
-render(<App />, rootEl)
+
+render(
+  <Provider store={store}>
+    <App />
+  </Provider>, rootEl)
 
 if (module.hot) {
   module.hot.accept('./App', () => {
